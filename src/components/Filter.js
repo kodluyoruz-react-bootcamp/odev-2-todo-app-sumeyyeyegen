@@ -3,11 +3,10 @@ import ClearButton from './ClearButton'
 import FilterButton from './FilterButton'
 import { useState, useEffect } from "react"
 
-function Filter({ tasks, onChange }) {
-    const [list, setList] = useState(tasks)
+function Filter({ tasks, onChange, setTask }) {
     useEffect(() => {
-        setList(tasks)
-    }, [tasks])
+        setTask(tasks)
+    })
 
     function handleChange(filter) {
         onChange(filter)
@@ -16,7 +15,7 @@ function Filter({ tasks, onChange }) {
     return (
         <footer className="footer">
             <span className="todo-count">
-                <strong>{list.filter(t => !t.checked).length}</strong> items left
+                <strong>{tasks.filter(t => !t.checked).length}</strong> items left
             </span>
             <ul className="filters">
                 <li>

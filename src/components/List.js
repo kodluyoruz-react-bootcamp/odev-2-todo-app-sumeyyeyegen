@@ -1,11 +1,7 @@
 import React from 'react'
-
 import Task from "./Task"
-import { useState, useEffect } from "react"
 
-function List({ tasks, onChange }) {
-    const [list, setList] = useState(tasks)
-
+function List({ tasks, onChange, setTask }) {
     function handleSetList(id, isChecked) {
         if (isChecked !== undefined)
             changedChecked(id, isChecked)
@@ -14,23 +10,18 @@ function List({ tasks, onChange }) {
     }
 
     function removeList(id) {
-        list.splice(id, 1)
-        setList(list);
-        onChange(list);
+        tasks.splice(id, 1)
+        setTask(tasks);
+        onChange(tasks);
     }
 
     function changedChecked(id, isChecked) {
-        list[id].checked = isChecked;
-        onChange(list);
+        tasks[id].checked = isChecked;
+        onChange(tasks);
     }
-
-    useEffect(() => {
-        setList(tasks)
-    }, [tasks])
-
     return (
         <ul className="todo-list">
-            {list.map((task, index) =>
+            {tasks.map((task, index) =>
                 <Task key={index} id={index} checked={task.checked} task={task.name} onChange={handleSetList} />
             )}
         </ul>

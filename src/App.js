@@ -48,8 +48,8 @@ function App() {
         <section className="main">
           <input className="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-          <List tasks={tasks} onChange={(list) => setTask(list)} />
-          <Filter tasks={tasks} onChange={(item) => filterChange(item)} />
+          <List tasks={tasks} setTask={setTask} onChange={(list) => setTask(list)} />
+          <Filter tasks={tasks} setTask={setTask} onChange={(item) => filterChange(item)} />
         </section>
       </section>
       <Footer />
