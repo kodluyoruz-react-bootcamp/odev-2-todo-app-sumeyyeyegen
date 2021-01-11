@@ -53,15 +53,19 @@ function App() {
 
   return (
     <div>
+      {console.log(tasks)}
       <section className="todoapp">
         <header className="header">
           <Title title="tasks" />
-          <CreateTask placeholder="What needs to be done?" onChange={addTask} completeAllTasks={completeAllTasks} />
+          <CreateTask placeholder="What needs to be done?"
+            onChange={addTask} completeAllTasks={completeAllTasks}
+            tasks={tasks} setTasks={setTasks} />
         </header>
         <section className="main">
           <input className="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-          <List tasks={tasks} category={category} updateTaskHandler={updateTask} deleteTaskHandler={deleteTask} />
+          <List tasks={tasks} category={category}
+            updateTaskHandler={updateTask} deleteTaskHandler={deleteTask} />
           <Filter tasks={tasks}
             clearCompletedTasks={clearCompletedTasks}
             categoryHandler={categoryHandler} />

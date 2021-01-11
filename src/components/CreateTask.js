@@ -1,6 +1,7 @@
 import React from 'react'
+import Input from './Input';
 
-function CreateTask({ onChange }) {
+function CreateTask({ onChange, tasks, setTasks }) {
     function onSubmit(e) {
         e.preventDefault();
         onChange(e.target[0].value);
@@ -10,7 +11,7 @@ function CreateTask({ onChange }) {
 
     return (
         <form onSubmit={onSubmit}>
-
+            <Input tasks={tasks} setTasks={setTasks} />
         </form>
     )
 }

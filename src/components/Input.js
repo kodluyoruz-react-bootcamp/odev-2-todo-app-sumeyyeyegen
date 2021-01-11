@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-const Input = () => {
-    const [task, setTask] = useState("");
+import React from 'react'
+const Input = ({ tasks, setTasks }) => {
     return (
         <input className="new-todo"
             placeholder="What needs to be done?"
             autoFocus
             onChange={(e) => {
-                setTask(e.target.value)
+                setTasks(e.target.value)
             }} />
     )
 }
