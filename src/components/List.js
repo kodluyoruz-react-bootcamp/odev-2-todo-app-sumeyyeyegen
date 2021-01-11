@@ -1,29 +1,45 @@
 import React from 'react'
-import Task from "./Task"
+import ListItem from "./ListItem"
 
-function List({ tasks, onChange, setTask }) {
-    function handleSetList(id, isChecked) {
-        if (isChecked !== undefined)
-            changedChecked(id, isChecked)
-        else
-            removeList(id)
+function List({ tasks, category, updateTaskHandler, deleteTaskHandler }) {
+
+    let lists = tasks.map((task) => (
+        <ListItem
+            key={task.id}
+            task={task}
+            checkboxHandler={updateTaskHandler}
+            deleteTaskHandler={deleteTaskHandler} />
+    ));
+
+    if (category === "Active") {
+        lists = tasks
+            .filter(task => !task.checked)
+            .map(task => (
+                <ListItem
+                    key={task.id}
+                    task={task}
+                    checkboxHandler={updateTaskHandler}
+                    deleteTaskHandler={deleteTaskHandler}
+                />
+            ));
     }
 
-    function removeList(id) {
-        tasks.splice(id, 1)
-        setTask(tasks);
-        onChange(tasks);
+    if (category === "Completed") {
+        lists = tasks
+            .filter(task => task.checked)
+            .map(task => (
+                <ListItem
+                    key={task.id}
+                    task={task}
+                    checkboxHandler={updateTaskHandler}
+                    deleteTaskHandler={deleteTaskHandler}
+                />
+            ));
     }
 
-    function changedChecked(id, isChecked) {
-        tasks[id].checked = isChecked;
-        onChange(tasks);
-    }
     return (
         <ul className="todo-list">
-            {tasks.map((task, index) =>
-                <Task key={index} id={index} checked={task.checked} task={task.name} onChange={handleSetList} />
-            )}
+            {lists}
         </ul>
 
     )

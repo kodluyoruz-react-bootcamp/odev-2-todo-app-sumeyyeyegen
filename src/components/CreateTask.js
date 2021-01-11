@@ -1,6 +1,4 @@
 import React from 'react'
-import Input from './Input';
-
 
 function CreateTask({ onChange }) {
     function onSubmit(e) {
@@ -12,7 +10,7 @@ function CreateTask({ onChange }) {
 
     return (
         <form onSubmit={onSubmit}>
-            <Input />
+
         </form>
     )
 }

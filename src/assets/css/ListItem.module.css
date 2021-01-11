@@ -1,0 +1,32 @@
+.listItem {
+	list-style: none;
+	font-size: 24px;
+	border-bottom: 1px solid #ededed;
+	padding: 1rem;
+	display: flex;
+	align-items: center;
+}
+.lineThrough {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
+
+.listItem input {
+	margin-left: 10px;
+	margin-right: 20px;
+}
+.deleteBtn {
+	display: none;
+	color: red;
+	border: none;
+	background-color: transparent;
+	padding: 3px 7px;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1rem;
+	margin-left: auto;
+}
+
+.listItem:hover .deleteBtn {
+	display: block;
+}

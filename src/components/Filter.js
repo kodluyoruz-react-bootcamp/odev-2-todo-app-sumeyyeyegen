@@ -1,36 +1,34 @@
 
-import ClearButton from './ClearButton'
-import FilterButton from './FilterButton'
-import { useState, useEffect } from "react"
 
-function Filter({ tasks, onChange, setTask }) {
-    useEffect(() => {
-        setTask(tasks)
-    })
-
-    function handleChange(filter) {
-        onChange(filter)
-    }
-
+function Filter({ tasks, clearCompletedTasks, categoryHandler, selected = false }) {
+    const uncompletedTasks = tasks.filter(task => !task.isCompleted);
     return (
         <footer className="footer">
             <span className="todo-count">
-                <strong>{tasks.filter(t => !t.checked).length}</strong> items left
+                <strong>{uncompletedTasks.length}</strong> items left
             </span>
             <ul className="filters">
                 <li>
-                    <FilterButton selected="selected" name="All" onChange={handleChange} />
+                    <a href="true" name="All" onClick={(e) => {
+                        e.preventDefault();
+                        categoryHandler("All");
+                    }}>All</a>
                 </li>
                 <li>
-                    <FilterButton name="Active" onChange={handleChange} />
+                    <a href="true" name="Active" onClick={(e) => {
+                        e.preventDefault();
+                        categoryHandler("Active")
+                    }}>Active</a>
                 </li>
                 <li>
-                    <FilterButton name="Completed" onChange={handleChange} />
+                    <a href="true" name="Completed" onClick={(e) => {
+                        e.preventDefault();
+                        categoryHandler("Completed");
+                    }}>Completed</a>
                 </li>
             </ul>
-
-            <ClearButton />
-        </footer>
+            <button className="clear-completed" onClick={clearCompletedTasks} >Clear completed</button>
+        </footer >
     )
 }
 
