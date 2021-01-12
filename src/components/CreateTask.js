@@ -6,14 +6,13 @@ function CreateTask({ newTodoHandler, completeAllTasks }) {
     const submitHandler = (e) => {
         e.preventDefault();
         newTodoHandler(task);
-        setTask('');
     };
 
 
     return (
         <form onSubmit={submitHandler}>
             <Input type="text" autoFocus onChange={(e) => {
-                setTask(e.target.value);
+                setTask(e.target.value)
                 e.target.value = "";
             }} />
         </form>
