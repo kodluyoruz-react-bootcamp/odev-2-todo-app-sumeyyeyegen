@@ -12,7 +12,10 @@ function CreateTask({ newTodoHandler, completeAllTasks }) {
 
     return (
         <form onSubmit={submitHandler}>
-            <Input type="text" autoFocus onChange={(e) => { setTask(e.target.value) }} />
+            <Input type="text" autoFocus onChange={(e) => {
+                setTask(e.target.value);
+                e.target.value = "";
+            }} />
         </form>
     )
 }
