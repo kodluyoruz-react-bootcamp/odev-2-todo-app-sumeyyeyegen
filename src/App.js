@@ -52,7 +52,6 @@ function App() {
 
   return (
     <div>
-      {console.log(tasks)}
       <section className="todoapp">
         <header className="header">
           <Title title="tasks" />

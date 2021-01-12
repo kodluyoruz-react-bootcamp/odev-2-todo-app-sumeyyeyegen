@@ -12,13 +12,14 @@ function ListItem({ task, checkboxHandler, deleteTaskHandler }) {
                             <input
                                 className="toggle"
                                 type="checkbox"
+                                value={task.id}
                                 onChange={(e) => checkboxHandler(task.id, e.target.checked)}
                                 checked
                             />
                         ) :
                         (
                             <input
-                                type="checkbox" className="toggle"
+                                type="checkbox" className="toggle" value={task.id}
                                 onChange={(e) => checkboxHandler(task.id, e.target.checked)}
                             />
                         )
