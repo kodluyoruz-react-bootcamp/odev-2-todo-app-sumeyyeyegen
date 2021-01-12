@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from './Input';
 
-function CreateTask({ onChange, tasks, setTasks }) {
-    function onSubmit(e) {
+function CreateTask({ newTodoHandler, completeAllTasks }) {
+    const [task, setTask] = useState('');
+    const submitHandler = (e) => {
         e.preventDefault();
-        onChange(e.target[0].value);
-        e.target[0].value = "";
-    }
+        newTodoHandler(task);
+        setTask('');
+    };
 
 
     return (
-        <form onSubmit={onSubmit}>
-            <Input tasks={tasks} setTasks={setTasks} />
+        <form onSubmit={submitHandler}>
+            <Input type="text" autoFocus value={task} onChange={(e) => { setTask(e.target.value) }} />
         </form>
     )
 }

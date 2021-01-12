@@ -1,12 +1,8 @@
 import React from 'react'
-const Input = ({ tasks, setTasks }) => {
+const Input = (props) => {
     return (
-        <input className="new-todo"
-            placeholder="What needs to be done?"
-            autoFocus
-            onChange={(e) => {
-                setTasks(e.target.value)
-            }} />
+        <input className="new-todo" {...props}
+            placeholder="What needs to be done?" />
     )
 }
 export default Input;

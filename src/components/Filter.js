@@ -1,35 +1,62 @@
+import React, { useEffect, useState } from "react";
 
-
-function Filter({ tasks, clearCompletedTasks, categoryHandler, selected = false }) {
-    const uncompletedTasks = tasks.filter(task => !task.isCompleted);
+function Filter({ tasks, clearCompletedTasks, categoryHandler }) {
+    const [taskNum, setTaskNum] = useState(0);
+    useEffect(() => {
+        tasks.forEach((a) => {
+            if (a.isCompleted === false) {
+                setTaskNum(taskNum + 1);
+            }
+        });
+    }, [setTaskNum, taskNum, tasks]);
     return (
         <footer className="footer">
             <span className="todo-count">
-                <strong>{uncompletedTasks.length}</strong> items left
+                <strong>{taskNum}</strong> items left
             </span>
             <ul className="filters">
                 <li>
-                    <a href="true" name="All" onClick={(e) => {
-                        e.preventDefault();
-                        categoryHandler("All");
-                    }}>All</a>
+                    <a
+                        href="true"
+                        name="All"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            categoryHandler("All");
+                        }}
+                    >
+                        All
+                    </a>
                 </li>
                 <li>
-                    <a href="true" name="Active" onClick={(e) => {
-                        e.preventDefault();
-                        categoryHandler("Active")
-                    }}>Active</a>
+                    <a
+                        href="true"
+                        name="Active"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            categoryHandler("Active");
+                        }}
+                    >
+                        Active
+                    </a>
                 </li>
                 <li>
-                    <a href="true" name="Completed" onClick={(e) => {
-                        e.preventDefault();
-                        categoryHandler("Completed");
-                    }}>Completed</a>
+                    <a
+                        href="true"
+                        name="Completed"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            categoryHandler("Completed");
+                        }}
+                    >
+                        Completed
+                    </a>
                 </li>
             </ul>
-            <button className="clear-completed" onClick={clearCompletedTasks} >Clear completed</button>
-        </footer >
-    )
+            <button className="clear-completed" onClick={clearCompletedTasks}>
+                Clear completed
+            </button>
+        </footer>
+    );
 }
 
-export default Filter
+export default Filter;

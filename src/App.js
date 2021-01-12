@@ -22,12 +22,11 @@ function App() {
     setCategory(category);
   }
   function addTask(task) {
-    const updatedTasks = task.concat({
+    setTasks([...tasks, {
       id: tasks.length + 1,
       title: task,
       checked: false
-    });
-    setTasks(updatedTasks);
+    }])
   }
   const updateTask = (id, checked) => {
     const getIndex = tasks.findIndex(task => task.id === id);
@@ -58,8 +57,8 @@ function App() {
         <header className="header">
           <Title title="tasks" />
           <CreateTask placeholder="What needs to be done?"
-            onChange={addTask} completeAllTasks={completeAllTasks}
-            tasks={tasks} setTasks={setTasks} />
+            newTodoHandler={addTask}
+            completeAllTasks={completeAllTasks} />
         </header>
         <section className="main">
           <input className="toggle-all" type="checkbox" />
