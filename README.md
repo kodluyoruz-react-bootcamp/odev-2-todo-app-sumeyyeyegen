@@ -1,3 +1,6 @@
+[Netlify-Linki](https://5ffcf999bf162d00079d5b45--friendly-haibt-713c64.netlify.app/)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
